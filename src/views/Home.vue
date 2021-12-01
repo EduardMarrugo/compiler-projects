@@ -106,7 +106,7 @@ export default {
         {
           color: "red lighten-1",
           icon: "mdi-clipboard-text-play-outline",
-          subtitle: "17 Dic, 2021",
+          subtitle: "13 Dic, 2021",
           title: "Proyecto Final",
           name: "Home"
         },
