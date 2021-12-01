@@ -101,7 +101,7 @@ export default {
     //Rules for automata and RExp
     rules: {
       stringEmtpy: [(v) => !!v || false],
-      expresion: [(v) => /^[a-b]+$/.test(v) || false],
+      expresion: [(v) => /^[a-b\s]+$/.test(v) || false],
     },
     //data network
     networkEvents: "",
@@ -145,7 +145,7 @@ export default {
           title: "λ;λ;L",
           arrows: { to: { enabled: true, scaleFactor: 0.5 } },
         },
-        {
+         {
           id: 1,
           from: 0,
           to: 0,
@@ -157,13 +157,22 @@ export default {
           id: 2,
           from: 0,
           to: 0,
+          label: "#;#;R",
+          title: "#;#;R",
+          arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+          selfReference: { angle: 5 },
+        },
+        {
+          id: 3,
+          from: 0,
+          to: 0,
           label: "b;a;R",
           title: "b;a;R",
           arrows: { to: { enabled: true, scaleFactor: 0.5 } },
           selfReference: { angle: 3 },
         },
         {
-          id: 3,
+          id: 4,
           from: 1,
           to: 1,
           label: "a;a;L",
@@ -171,7 +180,16 @@ export default {
           arrows: { to: { enabled: true, scaleFactor: 0.5 } },
         },
         {
-          id: 4,
+          id: 5,
+          from: 1,
+          to: 1,
+          label: "#;#;L",
+          title: "#;#;L",
+          arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+          selfReference: { angle: 3 },
+        },
+        {
+          id: 6,
           from: 1,
           to: 2,
           label: "λ;λ;R",
@@ -196,6 +214,7 @@ export default {
   }),
   watch: {
     inputText(val) {
+      console.log(val)
       this.cintaTuring = [];
       if (this.rules.expresion[0](val)) {
         this.cintaTuring = [{ color: "blue ligthen-4", text: "λ" }];
@@ -205,7 +224,12 @@ export default {
             text: "",
           };
           if (val.length > index) {
-            obj.text = val[index];
+            if(val[index] == ' '){
+              obj.text = '#';
+            }
+            else{
+              obj.text = val[index];
+            }
             this.cintaTuring.push(obj);
           } else {
             obj.text = "λ";
