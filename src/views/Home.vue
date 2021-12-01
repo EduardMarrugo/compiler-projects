@@ -3,7 +3,7 @@
     <v-row v-show="url == 'Home'">
       <v-col>
         <v-card rounded="" elevation="2" class="mx-2">
-          <v-card-title class=" font-weight-light"> Projects : {{ url }}  </v-card-title>
+          <v-card-title class=" font-weight-light"> Projects</v-card-title>
           <v-list subheader two-line>
             <v-list-item v-for="file in files" :key="file.title" @click="$router.push({name: file.name})">
               <v-list-item-avatar>

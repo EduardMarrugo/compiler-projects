@@ -1,0 +1,23 @@
+{
+    "screen": {
+        "toolbarTitle": "Machine de Turing",
+        "startBtn": "Début",
+        "labels": "Texto de entrada | Expresión Regular | Animation  ",
+        "placehoder": "Entrez du texte",
+        "botton": "Iniciar recorrido | Detener recorrido",
+        "RExp": "^((aaa)*(aab)*b*)*$"
+    } ,
+    "alerts": {
+        "whatif": "¿Que pasa si..? | ¿Quieres representar vacio 'λ' (Lambda)?, Puedes escribir '?' para hacerlo, Recuerda que esto pueda ser una palabra valida para el automata.",
+        "start" :"Atención!! | No podra cambiar los valores. EL recorrido está por comenzar.",
+        "stop" : "Atencion!! | Animación detenida.",
+        "validateRoutes": {
+            "form": "Atención!! | La palabra ingresada no cumple con la expresión regular. Puede que el recorrido no llegue a un estado de aceptación o ni siquiera encuentre un camino hacía él.",
+            "bottoms": "Iniciar recorrido | Cambiar texto"
+        },
+        "valideWord": "Palabra valida para el automata! | Palabra invalida para el automata!",
+        "whithoutText": "Sin texto no hay recorrido!",
+        "notFoundRoute": "Atención!! |  No se encontro la arista: '"
+       
+    }      
+}

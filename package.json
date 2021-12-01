@@ -10,8 +10,14 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
+    "vis-network": "^9.1.0",
     "vue": "^2.6.11",
+    "vue-horizontal-scroll": "^0.2.4",
+    "vue-i18n": "^8.26.7",
     "vue-router": "^3.2.0",
+    "vue-sweetalert2": "^5.0.2",
+    "vue-visjs": "^0.6.0",
     "vuetify": "^2.4.0"
   },
   "devDependencies": {
