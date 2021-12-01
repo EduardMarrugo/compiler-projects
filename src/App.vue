@@ -40,6 +40,7 @@
         <router-view />
       </v-container>
     </v-main>
+
     <v-footer absolute :padless="true">
       <v-card flat tile width="100%" class="white lighten-1 text-center">
         <v-card-text class="dark--text">
@@ -63,6 +64,8 @@ export default {
   methods: {
     handleLang(item) {
       localStorage.setItem("lang", item);
+      this.$i18n.locale = item;
+      this.item = item
     },
   },
 };

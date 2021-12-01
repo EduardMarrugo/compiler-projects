@@ -1,84 +1,82 @@
 <template>
-    <div  class="">
-      <v-row>
-        <v-col cols="12" sm="6">
-          <label for="textoEntrada">{{ $tc("screen.labels", 0) }}</label>
-          <v-text-field
-            name="textoEntrada"
-            id="textoEntrada"
-            flat
-            solo-inverted
-            :placeholder="$t('screen.placehoder')"
-            v-model="textInput"
-            :readonly="disabled"
-          >
-          </v-text-field>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <label for="expresionRegular">{{ $tc("screen.labels", 1) }}</label>
-          <v-text-field
-            name="expresionRegular"
-            id="expresionRegular"
-            flat
-            solo-inverted
-            readonly
-            :value="$t('screen.RExp')"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="12" sm="6">
-          <v-slider
-            tick-size="5"
-            ticks="always"
-            :tick-labels="tickLabels"
-            v-model="velocidad"
-            :disabled="disabled"
-            min="1"
-            max="5"
-            :label="$tc('screen.labels', 2)"
-          ></v-slider>
-        </v-col>
-        <v-col cols="12" sm="6">
-          <v-btn
-            v-if="show"
-            block
-            color="blue lighten-1"
-            elevation="0"
-            dark
-            href="#network"
-            @click="validateRoutes()"
-          >
-            {{ $tc("screen.botton", 1) }}
-          </v-btn>
-           <v-btn
-            v-else
-            block
-            color="red lighten-1"
-            elevation="0"
-            dark
-            href="#network"
-            @click="show = true"
-          >
-            {{ $tc("screen.botton", 0) }}
-          </v-btn>
-        </v-col>
-      </v-row>
-      <app-network
-        id="network"
-        class="network"
-        ref="network"
-        :nodes="network.nodes"
-        :edges="network.edges"
-        :options="network.options"
-      
-      >
-      </app-network>
-    </div>
+  <div class="">
+    <v-row>
+      <v-col cols="12" sm="6">
+        <label for="textoEntrada">{{ $tc("screen.labels", 0) }}</label>
+        <v-text-field
+          name="textoEntrada"
+          id="textoEntrada"
+          flat
+          solo-inverted
+          :placeholder="$t('screen.placehoder')"
+          v-model="textInput"
+          :readonly="disabled"
+        >
+        </v-text-field>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <label for="expresionRegular">{{ $tc("screen.labels", 1) }}</label>
+        <v-text-field
+          name="expresionRegular"
+          id="expresionRegular"
+          flat
+          solo-inverted
+          readonly
+          :value="$t('screen.RExp')"
+        ></v-text-field>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12" sm="6">
+        <v-slider
+          tick-size="5"
+          ticks="always"
+          :tick-labels="tickLabels"
+          v-model="velocidad"
+          :disabled="disabled"
+          min="1"
+          max="5"
+          :label="$tc('screen.labels', 2)"
+        ></v-slider>
+      </v-col>
+      <v-col cols="12" sm="6">
+        <v-btn
+          v-if="show"
+          block
+          color="blue lighten-1"
+          elevation="0"
+          dark
+          href="#network"
+          @click="validateRoutes()"
+        >
+          {{ $tc("screen.botton", 1) }}
+        </v-btn>
+        <v-btn
+          v-else
+          block
+          color="red lighten-1"
+          elevation="0"
+          dark
+          href="#network"
+          @click="show = true"
+        >
+          {{ $tc("screen.botton", 0) }}
+        </v-btn>
+      </v-col>
+    </v-row>
+    <app-network
+      id="network"
+      class="network"
+      ref="network"
+      :nodes="network.nodes"
+      :edges="network.edges"
+      :options="network.options"
+    >
+    </app-network>
+  </div>
 </template>
 
 <script>
-
 import { Network } from "vue-visjs";
 const Swal = require("sweetalert2");
 
@@ -87,7 +85,6 @@ export default {
     "app-network": Network,
   },
   data: () => ({
-
     //Cancel Routes
     show: true,
     //Frontend
@@ -152,7 +149,7 @@ export default {
   },
   computed: {
     speed() {
-      let velocidad = 2000 / (this.velocidad);
+      let velocidad = 2000 / this.velocidad;
       return velocidad;
     },
     validar_entrada() {
@@ -168,12 +165,12 @@ export default {
       if (this.networkEvents.length > 500) this.networkEvents = "";
       this.networkEvents += `${eventName}, `;
     },
-    showInfoAboutEmpty(){
-       Swal.fire(
-      this.$i18n.tc("alerts.whatif", 1),
-      this.$i18n.tc("alerts.whatif", 0),
-      "info"
-    );
+    showInfoAboutEmpty() {
+      Swal.fire(
+        this.$i18n.tc("alerts.whatif", 1),
+        this.$i18n.tc("alerts.whatif", 0),
+        "info"
+      );
     },
     sleep(ms) {
       return new Promise((resolve) => setTimeout(resolve, ms));
@@ -194,7 +191,7 @@ export default {
         }
       }
     },
-    startRoute() {    
+    startRoute() {
       Swal.fire({
         title: this.$i18n.tc("alerts.start", 1),
         html: this.$i18n.tc("alerts.start", 0),
@@ -205,7 +202,7 @@ export default {
         },
         willClose: () => {
           clearInterval(700);
-          this.show = false
+          this.show = false;
           this.set_focus(this.focus);
         },
       });
@@ -253,43 +250,52 @@ export default {
 
       let focus = this.routesArray;
       console.log(focus);
-      if(this.textInput[0] == 'b' || this.textInput[0] == 'a' || this.textInput[0] == '?'){
+      if (
+        this.textInput[0] == "b" ||
+        this.textInput[0] == "a" ||
+        this.textInput[0] == "?"
+      ) {
         for (let index = 0; index < focus.length; index++) {
-          if(this.show == false){
-              await this.sleep(this.speed);
+          if (this.show == false) {
+            await this.sleep(this.speed);
             this.$refs.network.focus(focus[index], options);
-          }
-          else{
-            Swal.fire(this.$i18n.tc("alerts.stop", 1), this.$i18n.tc("alerts.stop", 0), "info");
+          } else {
+            Swal.fire(
+              this.$i18n.tc("alerts.stop", 1),
+              this.$i18n.tc("alerts.stop", 0),
+              "info"
+            );
             break;
-          }        
+          }
         }
       }
-      if(this.show == false){
-          setTimeout(() => {
-        if (this.rules.expresionValida[0](this.textInput)) {
-          Swal.fire(this.$i18n.tc("alerts.valideWord", 1), "", "success");
-        } else {
-          Swal.fire(this.$i18n.tc("alerts.valideWord", 0), "", "error").then(
-            (res) => {
-              console.log(res);
-              if (res.isConfirmed == true || res.isDismissed == true) {
-                if (focus.length - 1 != this.textInput.length) {
-                  if (this.textInput != "?") {
-                    Swal.fire({
-                      icon: "error",
-                      title: this.$i18n.tc("alerts.notFoundRoute", 1),
-                      text: this.$i18n.tc("alerts.notFoundRoute", 0) +  this.textInput[focus.length - 1] + "'"                     
-                    });
+      if (this.show == false) {
+        setTimeout(() => {
+          if (this.rules.expresionValida[0](this.textInput)) {
+            Swal.fire(this.$i18n.tc("alerts.valideWord", 1), "", "success");
+          } else {
+            Swal.fire(this.$i18n.tc("alerts.valideWord", 0), "", "error").then(
+              (res) => {
+                console.log(res);
+                if (res.isConfirmed == true || res.isDismissed == true) {
+                  if (focus.length - 1 != this.textInput.length) {
+                    if (this.textInput != "?") {
+                      Swal.fire({
+                        icon: "error",
+                        title: this.$i18n.tc("alerts.notFoundRoute", 1),
+                        text:
+                          this.$i18n.tc("alerts.notFoundRoute", 0) +
+                          this.textInput[focus.length - 1] +
+                          "'",
+                      });
+                    }
                   }
                 }
               }
-            }
-          );
-        }
-      }, 1500);
+            );
+          }
+        }, 1500);
       }
-    
 
       this.show = true;
       this.disabled = false;

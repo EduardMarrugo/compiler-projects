@@ -257,7 +257,6 @@ export default {
             switch (spliterEdges[2]) {
               case "R":
                 this.routes(this.network.nodes[edge.to], indexInput + 1);
-
                 break;
               case "L":
                 this.routes(this.network.nodes[edge.to], indexInput - 1);
@@ -267,18 +266,6 @@ export default {
           }
         }
       }
-    },
-
-    async conver(index, variable) {
-      let aux = this.inputText.split("");
-      aux[index] = variable;
-      let text = "";
-      for (let index = 0; index < aux.length; index++) {
-        text += aux[index];
-      }
-      this.inputText = text;
-      // document.getElementById(index).style.color = "black";
-      return text;
     },
 
     sleep(ms) {

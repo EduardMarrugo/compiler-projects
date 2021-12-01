@@ -8,6 +8,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
+    // redirect: "/turing-machine",
     component: Home,
     children: [
       {
