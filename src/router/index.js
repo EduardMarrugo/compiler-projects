@@ -1,30 +1,45 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
     component: Home,
     children: [
-      {path: '/finite-automata', component: () => import(/* webpackChunkName: "about" */ '../views/projects/AutomataFinito.vue')},
-      {path: '/turing-machine', component: () => import(/* webpackChunkName: "about" */ '../views/projects/TuringMachine.vue')}
-    ]
+      {
+        path: "finite-automata",
+        name: "FiniteAutomata",
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ "../views/projects/AutomataFinito.vue"
+          ),
+      },
+      {
+        path: "turing-machine",
+        name: "TuringMachine",
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ "../views/projects/TuringMachine.vue"
+          ),
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/about",
+    name: "About",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

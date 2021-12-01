@@ -1,37 +1,30 @@
 <template>
   <v-app>
     <v-app-bar app color="white">
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="./assets/unimag.png"
-          transition="scale-transition"
-          width="60"
-        />
+      <router-link style="text-decoration: none; color: black" to="/">
+        <div class="d-flex align-center">
+          <v-img
+            alt="Vuetify Logo"
+            class="shrink mr-2"
+            contain
+            src="./assets/unimag.png"
+            transition="scale-transition"
+            width="50"
+          />
 
-        <v-toolbar-title class="font-weight-light">
-          Curso Compiladores
-        </v-toolbar-title>
-
-        <!-- <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        /> -->
-      </div>
+          <v-toolbar-title class="font-weight-light text-truncate">
+            Curso Compiladores
+          </v-toolbar-title>
+        </div>
+      </router-link>
 
       <v-spacer></v-spacer>
-      <v-col cols="3">
+      <v-col cols="2">
         <v-select
-          class="mt-7"
+          class="mt-7 mr-n10"
           single-line
-          append-icon="mdi-magnify"
-          solo-inverted
+          prepend-inner-icon="mdi-translate"
+          solo
           flat
           v-model="lang"
           @change="handleLang"
@@ -43,15 +36,23 @@
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <v-container fluid>
+        <router-view />
+      </v-container>
     </v-main>
+    <v-footer absolute :padless="true">
+      <v-card flat tile width="100%" class="white lighten-1 text-center">
+        <v-card-text class="dark--text">
+          {{ new Date().getFullYear() }} — <strong>Curso de Compiladores</strong>
+        </v-card-text>
+      </v-card>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
 export default {
   name: "App",
-
   data: function () {
     const lang = localStorage.getItem("lang") || "es";
     return {
